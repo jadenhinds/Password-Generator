@@ -26,9 +26,17 @@ public class PassGenerator {
     static String makePass(String[] alphabet, int minNum, int maxNum) {
         StringBuilder password = new StringBuilder();
         // create instance of Random class
+        int Length;
         Random rand = new Random();
 
-        int Length = rand.nextInt(minNum, maxNum);
+        if (minNum == maxNum) {
+            Length = minNum;
+        }
+        else {
+            Length = rand.nextInt(minNum, maxNum);
+        }
+
+
         for (int i = 0; i < Length; i++) {
             password.append(pickChar(alphabet));
         }

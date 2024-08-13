@@ -5,7 +5,6 @@ public class Settings {
     static final String Lowers = "abcdefghijklmnopqrstuvwxyz";
     static final String Numbers = "1234567890";
     static final String Symbols = "!@#$%^&*()-_=+\\/~?";
-    static List<String> charList = new ArrayList<String>();
 
     static Scanner scanner = new Scanner(System.in); // Initialize Scanner
 
@@ -31,12 +30,24 @@ public class Settings {
     // Records what alphabet is required for the password
     private static Boolean hasType(String type){
         System.out.println("Do you want to include " + type + "? (true/false)");
+        while (!scanner.hasNextBoolean()) {
+            System.out.println("Enter true/false!");
+            scanner.next(); // this is important!
+        }
         return scanner.nextBoolean();
     }
 
     public static int passLength(String MinOrMax) {
-        System.out.println("What is the " + MinOrMax + "? length of the password?");
-        return scanner.nextInt();
+        int number;
+        do {
+            System.out.println("What is the " + MinOrMax + "? length of the password?");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Please enter a positive number!");
+                scanner.next(); // this is important!
+            }
+            number = scanner.nextInt();
+        } while (number <= 1);
+        return number;
     }
 
     public static String[] Alphabet() {
