@@ -9,42 +9,37 @@ public class Settings {
 
     static Scanner scanner = new Scanner(System.in); // Initialize Scanner
 
-    static List<String> createAlphabet(boolean hasUppers, boolean hasLowers, boolean hasNumbers, boolean hasSymbols) {
-        if (hasType("upper case letters")) {
-            charList.add(Uppers);
+    static String[] createAlphabet(boolean hasUppers, boolean hasLowers, boolean hasNumbers, boolean hasSymbols) {
+        ArrayList<String> Alphabet = new ArrayList<String>();
+        if (hasUppers) {
+            Alphabet.add(Uppers);
         }
-        if (hasType("lower case letters")) {
-            charList.add(Lowers);
+        if (hasLowers) {
+            Alphabet.add(Lowers);
         }
-        if (hasType("numbers")) {
-            charList.add(Numbers);
+        if (hasNumbers) {
+            Alphabet.add(Numbers);
         }
-        if (hasType("symbols")) {
-            charList.add(Symbols);
+        if (hasSymbols) {
+            Alphabet.add(Symbols);
         }
 
         // Add conditions for hasLowers, hasNumbers, and hasSymbols here
-        System.out.println(Arrays.toString(charList.toArray(new String[0])));
-        System.out.println(charList.toString());
-        return charList;
+        return Alphabet.toArray(new String[0]);
     }
 
     // Records what alphabet is required for the password
-    static Boolean hasType(String type){
+    private static Boolean hasType(String type){
         System.out.println("Do you want to include " + type + "? (true/false)");
-        boolean TrueOrFalse = scanner.nextBoolean();
-
-        scanner.close();
-
-        return TrueOrFalse;
+        return scanner.nextBoolean();
     }
 
-    static int passLength(String MinOrMax) {
+    public static int passLength(String MinOrMax) {
         System.out.println("What is the " + MinOrMax + "? length of the password?");
-        int length = scanner.nextInt();
-
-        scanner.close();
-
-        return length;
+        return scanner.nextInt();
     }
- }
+
+    public static String[] Alphabet() {
+        return createAlphabet(hasType("upper case letters"), hasType("lower case letters"), hasType("numbers"), hasType("symbols"));
+    }
+}

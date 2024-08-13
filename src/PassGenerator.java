@@ -38,11 +38,9 @@ public class PassGenerator {
 
     static String newPassword() {
 
-        boolean[] mode = Settings.alphabetSettings();
+        String[] alphas = Settings.Alphabet();
 
-        String[] alphas = Settings.createAlphabet(mode[0], mode[1], mode[2], mode[3]).toArray(new String[0]);
-
-        return PassGenerator.makePass(alphas, 7, 9);
+        return PassGenerator.makePass(alphas, Settings.passLength("minimum"), Settings.passLength("maximum"));
     }
 
 } // This closing brace was missing
