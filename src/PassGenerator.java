@@ -2,6 +2,13 @@ import java.util.*;
 //
 
 public class PassGenerator {
+    public static String Password;
+    public static String Strength;
+
+    public PassGenerator() {
+        Password = newPassword();
+        Strength = validate.checkPassword(Password);
+    }
 
     static char pickChar(String[] alphas){
         // create instance of Random class
@@ -26,9 +33,17 @@ public class PassGenerator {
     static String makePass(String[] alphabet, int minNum, int maxNum) {
         StringBuilder password = new StringBuilder();
         // create instance of Random class
+        int Length;
         Random rand = new Random();
 
-        int Length = rand.nextInt(minNum, maxNum);
+        if (minNum == maxNum) {
+            Length = minNum;
+        }
+        else {
+            Length = rand.nextInt(minNum, maxNum);
+        }
+
+
         for (int i = 0; i < Length; i++) {
             password.append(pickChar(alphabet));
         }
@@ -38,9 +53,9 @@ public class PassGenerator {
 
     static String newPassword() {
 
-        String[] alphas = Settings.Alphabet();
+        Settings Settings = new Settings();
 
-        return PassGenerator.makePass(alphas, Settings.passLength("minimum"), Settings.passLength("maximum"));
+        return PassGenerator.makePass(Settings.alphabet, Settings.minLength, Settings.maxLength);
+
+        };
     }
-
-} // This closing brace was missing
