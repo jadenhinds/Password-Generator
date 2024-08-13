@@ -3,20 +3,6 @@ import java.util.*;
 
 public class PassGenerator {
 
-
-    static String makePass(String[] alphabet, int minNum, int maxNum) {
-        StringBuilder password = new StringBuilder();
-        // create instance of Random class
-        Random rand = new Random();
-
-        int Length = rand.nextInt(minNum, maxNum);
-        for (int i = 0; i < Length; i++) {
-            password.append(pickChar(alphabet));
-        }
-        System.out.println(password);
-        return password.toString();
-    }
-
     static char pickChar(String[] alphas){
         // create instance of Random class
         char inLetter;
@@ -37,6 +23,26 @@ public class PassGenerator {
         return inLetter;
     }
 
+    static String makePass(String[] alphabet, int minNum, int maxNum) {
+        StringBuilder password = new StringBuilder();
+        // create instance of Random class
+        Random rand = new Random();
 
+        int Length = rand.nextInt(minNum, maxNum);
+        for (int i = 0; i < Length; i++) {
+            password.append(pickChar(alphabet));
+        }
+        System.out.println(password);
+        return password.toString();
+    }
+
+    static String newPassword() {
+
+        boolean[] mode = Settings.alphabetSettings();
+
+        String[] alphas = Settings.createAlphabet(mode[0], mode[1], mode[2], mode[3]).toArray(new String[0]);
+
+        return PassGenerator.makePass(alphas, 7, 9);
+    }
 
 } // This closing brace was missing

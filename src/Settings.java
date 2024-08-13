@@ -7,6 +7,8 @@ public class Settings {
     static final String Symbols = "!@#$%^&*()-_=+\\/~?";
     static List<String> charList = new ArrayList<String>();
 
+    static Scanner scanner = new Scanner(System.in); // Initialize Scanner
+
     static List<String> createAlphabet(boolean hasUppers, boolean hasLowers, boolean hasNumbers, boolean hasSymbols) {
         if (hasUppers) {
             charList.add(Uppers);
@@ -27,21 +29,24 @@ public class Settings {
         return charList;
     }
 
-    static boolean[] alphabetSettings() {
-        Scanner scanner = new Scanner(System.in); // Initilize Scanner
+    // Records what alphabet is required for the password
+    boolean hasType(String type){
+        System.out.println(STR."Do you want to include \{type}? (true/false)");
+        return scanner.nextBoolean();
+    }
+
+    static int[] passLength() {
+        int minPassLength;
+        int maxPassLength;
 
         // Records what alphabet is required for the password
-        System.out.println("Do you want to include uppercase letters? (true/false)");
-        boolean hasUpper = scanner.nextBoolean();
-        System.out.println("Do you want to include lowercase letters? (true/false)");
-        boolean hasLower = scanner.nextBoolean();
-        System.out.println("Do you want to include numbers? (true/false)");
-        boolean hasNumbers = scanner.nextBoolean();
-        System.out.println("Do you want to include symbols? (true/false)");
-        boolean hasSymbols = scanner.nextBoolean();
+        System.out.println("What is the minimum length of the password?");
+        minPassLength = scanner.nextBigInteger().intValue();
+        System.out.println("What is the maximum length of the password?");
+        maxPassLength = scanner.nextBigInteger().intValue();
 
         scanner.close();
 
-        return new boolean[] {hasUpper, hasLower, hasNumbers, hasSymbols};
+        return new int[]{minPassLength, maxPassLength};
     }
 }
