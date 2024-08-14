@@ -40,6 +40,7 @@ public class validate {
     }
 
     public static String checkPassword(String Pass) {
+        count(Pass);
 
         if (hasUppers && hasLowers && hasNumbers && hasSymbols && passLength >= 16) {
             quality = "strong";
