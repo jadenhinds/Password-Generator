@@ -54,8 +54,4 @@ public class validate {
         return quality;
     }
 
-    public static void main(String[] args) {
-        new validate("(A?*Y)u0Rq?-7C");
-    }
-
 }

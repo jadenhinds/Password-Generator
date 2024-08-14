@@ -21,7 +21,7 @@ public class Settings {
 
     }
     static String[] createAlphabet(boolean hasUppers, boolean hasLowers, boolean hasNumbers, boolean hasSymbols) {
-        ArrayList<String> Alphabet = new ArrayList<String>();
+        ArrayList<String> Alphabet = new ArrayList<>();
         if (hasUppers) {
             Alphabet.add(Uppers);
             Settings.hasUppers = true;
@@ -56,14 +56,19 @@ public class Settings {
     public static int passLength(String MinOrMax, int requiredMin, int requiredMax, String errorMessage) {
         int number;
         System.out.println("What is the " + MinOrMax + " length of the password?");
-        do {
-            while (!scanner.hasNextInt()) {
-                System.out.println(errorMessage);
-                scanner.next(); // this is important!
+        while (scanner.hasNext()) {
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
+                if (number >= requiredMin && number < requiredMax) { // <-- from "requiredMin" to "requiredMax".
+                    return number;
+                }
+            } else {
+
+                scanner.next();
             }
-            number = scanner.nextInt();
-        } while (number <= requiredMin || number >= requiredMax);
-        return number;
+            System.out.println(errorMessage);
+        }
+        return requiredMax;
     }
 
     public static String[] Alphabet() {

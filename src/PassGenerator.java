@@ -57,5 +57,5 @@ public class PassGenerator {
 
         return PassGenerator.makePass(Settings.alphabet, Settings.minLength, Settings.maxLength);
 
-        };
+        }
     }
