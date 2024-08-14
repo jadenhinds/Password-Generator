@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class Settings {
-    static final String Uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static final String Lowers = "abcdefghijklmnopqrstuvwxyz";
-    static final String Numbers = "1234567890";
-    static final String Symbols = "!@#$%^&*()-_=+\\/~?";
+    final static String Uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    final static String Lowers = "abcdefghijklmnopqrstuvwxyz";
+    final static String Numbers = "1234567890";
+    final static String Symbols = "!@#$%^&*()-_=+\\/~?";
     public static boolean hasUppers = false;
     public static boolean hasLowers = false;
     public static boolean hasNumbers = false;
@@ -20,21 +20,21 @@ public class Settings {
         maxLength = passLength("maximum", minLength,100, "Please enter a between " + minLength + " and 100: ");
 
     }
-    static String[] createAlphabet(boolean hasUppers, boolean hasLowers, boolean hasNumbers, boolean hasSymbols) {
+    public static String[] createAlphabet(boolean hasUppers, boolean hasLowers, boolean hasNumbers, boolean hasSymbols) {
         ArrayList<String> Alphabet = new ArrayList<>();
         if (hasUppers) {
             Alphabet.add(Uppers);
             Settings.hasUppers = true;
         }
-        if (hasLowers) {
+        else if (hasLowers) {
             Alphabet.add(Lowers);
             Settings.hasLowers = true;
         }
-        if (hasNumbers) {
+        else if (hasNumbers) {
             Alphabet.add(Numbers);
             Settings.hasNumbers = true;
         }
-        if (hasSymbols) {
+        else if (hasSymbols) {
             Alphabet.add(Symbols);
             Settings.hasSymbols = true;
         }
