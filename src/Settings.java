@@ -13,10 +13,11 @@ public class Settings {
     public int minLength;
     public int maxLength;
     static Scanner scanner = new Scanner(System.in); // Initialize Scanner
+    public static boolean mode;
 
     public Settings(){
         alphabet = Alphabet();
-        minLength = passLength("minimum", 1, 100, "Please enter a integer between 1 and 100: ");
+        minLength = passLength("minimum", 4, 100, "Please enter a integer between 1 and 100: ");
         maxLength = passLength("maximum", minLength,100, "Please enter a between " + minLength + " and 100: ");
 
     }
@@ -71,6 +72,22 @@ public class Settings {
         return requiredMax;
     }
 
+    private void mode() {
+        System.out.println("Select Mode: \n Generate New Password (1) \n Validate Password Strength (2)");
+        while (!scanner.hasNextBoolean()) {
+            System.out.println("Enter 0/1");
+            scanner.next(); // this is important!
+        }
+
+        mode = scanner.nextBoolean();
+
+        if (mode) {
+            PassGenerator.newPassword();
+        }
+        else {
+
+        }
+    }
     public static String[] Alphabet() {
         return createAlphabet(hasType("upper case letters"), hasType("lower case letters"), hasType("numbers"), hasType("symbols"));
     }

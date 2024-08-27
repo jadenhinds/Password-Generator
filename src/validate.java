@@ -1,4 +1,6 @@
-public class validate {
+import java.util.Scanner;
+
+public class Validate {
     private static final String Uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String Lowers = "abcdefghijklmnopqrstuvwxyz";
     private static final String Numbers = "1234567890";
@@ -11,10 +13,14 @@ public class validate {
 
     public static int passLength = 0;
     public static String quality;
+    static Scanner scanner = new Scanner(System.in); // Initialize Scanner
 
-    public validate(String Pass) {
-        count(Pass);
-        checkPassword(Pass);
+    public Validate() {
+        System.out.println("What password do you want to validate?");
+        while (!scanner.hasNextLine()) {
+            scanner.next(); // this is important!
+        }
+        checkPassword(scanner.nextLine());
     }
 
     public static void count(String Pass)  {

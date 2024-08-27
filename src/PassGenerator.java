@@ -7,7 +7,7 @@ public class PassGenerator {
 
     public PassGenerator() {
         Password = newPassword();
-        Strength = validate.checkPassword(Password);
+        Strength = Validate.checkPassword(Password);
     }
 
     static char pickChar(String[] alphas){
