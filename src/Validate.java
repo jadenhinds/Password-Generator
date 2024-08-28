@@ -13,14 +13,14 @@ public class Validate {
 
     public static int passLength = 0;
     public static String quality;
-    static Scanner scanner = new Scanner(System.in); // Initialize Scanner
+    static Scanner scannerv = new Scanner(System.in); // Initialize Scanner
 
     public Validate() {
         System.out.println("What password do you want to validate?");
-        while (!scanner.hasNextLine()) {
-            scanner.next(); // this is important!
+        while (!scannerv.hasNextLine()) {
+            scannerv.next(); // this is important!
         }
-        checkPassword(scanner.nextLine());
+        System.out.println("Your password is " + checkPassword(scannerv.nextLine()));
     }
 
     public static void count(String Pass)  {

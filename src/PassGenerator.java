@@ -53,7 +53,7 @@ public class PassGenerator {
 
     static String newPassword() {
 
-        Settings Settings = new Settings();
+        Settings.mode();
 
         return PassGenerator.makePass(Settings.alphabet, Settings.minLength, Settings.maxLength);
 
