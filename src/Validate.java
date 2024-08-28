@@ -20,7 +20,7 @@ public class Validate {
         while (!scannerv.hasNextLine()) {
             scannerv.next(); // this is important!
         }
-        System.out.println("Your password is " + checkPassword(scannerv.nextLine()));
+        System.out.println(STR."Your password is \{checkPassword(scannerv.nextLine())}");
     }
 
     public static void count(String Pass)  {

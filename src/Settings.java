@@ -51,9 +51,11 @@ public class Settings {
         }
         if (hasLowers) {
             Alphabet.add(Lowers);
-        }if (hasNumbers) {
+        }
+        if (hasNumbers) {
             Alphabet.add(Numbers);
-        } if (hasSymbols){
+        }
+        if (hasSymbols){
             Alphabet.add(Symbols);
         }
         // Add conditions for hasLowers, hasNumbers, and hasSymbols here
